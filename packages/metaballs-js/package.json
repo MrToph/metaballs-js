@@ -1,0 +1,41 @@
+{
+  "name": "metaballs-js",
+  "version": "0.0.5",
+  "description": "Animated Metaballs using WebGL",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "jsnext:main": "dist/index.es.js",
+  "engines": {
+    "node": ">=8",
+    "npm": ">=5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MrToph/metaballs-js.git"
+  },
+  "author": "Christoph Michel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MrToph/metaballs-js/issues"
+  },
+  "homepage": "https://github.com/MrToph/metaballs-js#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "cross-env": "^5.1.4",
+    "eslint": "^5.0.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "rollup": "^1.7.4",
+    "rollup-plugin-commonjs": "^9.2.2",
+    "rollup-plugin-node-resolve": "^4.0.1"
+  },
+  "dependencies": {
+    "rollup-plugin-babel": "^4.3.2"
+  }
+}

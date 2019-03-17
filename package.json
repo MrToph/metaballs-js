@@ -1,0 +1,37 @@
+{
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MrToph/metaballs-js.git"
+  },
+  "author": "Christoph Michel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MrToph/metaballs-js/issues"
+  },
+  "homepage": "https://github.com/MrToph/metaballs-js#readme",
+  "scripts": {
+    "start": "lerna run start --scope=example",
+    "deploy": "lerna run build --scope=example && gh-pages -d packages/example/build",
+    "clean": "rimraf packages/*/dist",
+    "compile": "npm run clean && npm run compile:prod -- --environment PACKAGES:*",
+    "compile:prod": "rollup -c rollup.config.prod.js",
+    "prepublishOnly": "npm run compile"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/preset-flow": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "gh-pages": "^2.0.1",
+    "lerna": "3.10.6",
+    "minimatch": "^3.0.4",
+    "rimraf": "^2.6.3",
+    "rollup": "1.7.3",
+    "rollup-plugin-alias": "^1.5.1",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-commonjs": "^9.2.2",
+    "rollup-plugin-node-resolve": "^4.0.1"
+  }
+}

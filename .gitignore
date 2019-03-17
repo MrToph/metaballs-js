@@ -1,0 +1,10 @@
+.idea/
+.vscode/
+node_modules/
+build/
+tmp/
+temp/
+dist
+*-error.log
+.next
+packages/*/dist
