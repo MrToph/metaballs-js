@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import initMetaballs from "metaballs-js";
-import '../node_modules/react-dat-gui/build/react-dat-gui.css';
+import Metaballs from "react-metaballs-js";
+import "../node_modules/react-dat-gui/build/react-dat-gui.css";
 import DatGui, {
   DatBoolean,
   DatColor,
@@ -14,22 +14,15 @@ class App extends Component {
 
   state = {
     data: {
-      package: "react-dat-gui",
-      power: 9000,
-      isAwesome: true,
-      feelsLike: "#2FA1D6"
+      package: "metaballs-js",
+      numMetaballs: 100,
+      minRadius: 10,
+      maxRadius: 30,
+      speed: 30,
+      color: "#B60000",
+      backgroundColor: "#000000"
     }
   };
-
-  componentDidMount() {
-    initMetaballs(this.ref.current);
-    console.log(this.ref.current.width);
-  }
-
-  // rendering handled by metaballs-js
-  shouldComponentUpdate() {
-    return false;
-  }
 
   handleUpdate = data => this.setState({ data });
 
@@ -37,23 +30,40 @@ class App extends Component {
     const { data } = this.state;
     return (
       <>
-        <canvas
-          // width="500"
-          // height="400"
-          ref={this.ref}
-        />
+        <Metaballs key={JSON.stringify(data)} {...data} />
 
         <DatGui className="gui" data={data} onUpdate={this.handleUpdate}>
           <DatString path="package" label="Package" />
           <DatNumber
-            path="power"
-            label="Power"
-            min={9000}
-            max={9999}
+            path="numMetaballs"
+            label="Number of Metaballs"
+            min={0}
+            max={500}
             step={1}
           />
-          <DatBoolean path="isAwesome" label="Awesome?" />
-          <DatColor path="feelsLike" label="Feels Like" />
+          <DatNumber
+            path="minRadius"
+            label="Min. Radius"
+            min={0}
+            max={500}
+            step={1}
+          />
+          <DatNumber
+            path="maxRadius"
+            label="Max. Radius"
+            min={0}
+            max={500}
+            step={1}
+          />
+          <DatNumber
+            path="speed"
+            label="Speed"
+            min={0}
+            max={500}
+            step={1}
+          />
+          <DatColor path="color" label="Color" />
+          <DatColor path="backgroundColor" label="Background" />
         </DatGui>
       </>
     );

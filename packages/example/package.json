@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/MrToph/metaballs-js#readme",
   "dependencies": {
-    "metaballs-js": "*",
+    "react-metaballs-js": "*",
     "react": "^16.8.4",
     "react-dat-gui": "^2.2.0",
     "react-dom": "^16.8.4",

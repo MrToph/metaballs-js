@@ -1,27 +1,33 @@
+import hexToVec4 from "./hex-to-vec4";
+
 const defaultOptions = {
-  numMetaballs: 100
+  numMetaballs: 100,
+  minRadius: 10,
+  maxRadius: 30,
+  speed: 30,
+  color: "#ff0000",
+  backgroundColor: "#000000"
 };
 
-export default function initMetaballs(canvas, options = {}) {
-  const mergedOptions = {
-    ...defaultOptions,
-    ...options
-  };
+export default function initMetaballs(canvas, passedOptions = {}) {
+  const options = Object.assign({}, defaultOptions, passedOptions);
 
-  console.log(canvas)
-  if(typeof canvas === 'string') {
-      canvas = document.getElementById(canvas);
+  console.log(canvas);
+  if (typeof canvas === "string") {
+    canvas = document.getElementById(canvas);
   }
-  if(!canvas instanceof Element || canvas.tagName.toLowerCase() !== 'canvas') {
-      throw new Error(`First argument of "initMetaballs" must be a valid canvas element or a selector to an existing canvas element.`)
+  if (!canvas instanceof Element || canvas.tagName.toLowerCase() !== "canvas") {
+    throw new Error(
+      `First argument of "initMetaballs" must be a valid canvas element or a selector to an existing canvas element.`
+    );
   }
-  
-  var NUM_METABALLS = mergedOptions.numMetaballs;
+
+  var NUM_METABALLS = options.numMetaballs;
   canvas.width = canvas.clientWidth;
   canvas.height = canvas.clientHeight;
   var WIDTH = canvas.width;
   var HEIGHT = canvas.height;
-  console.log({ WIDTH, HEIGHT })
+  console.log({ WIDTH, HEIGHT });
   /**
    * Shaders
    */
@@ -53,34 +59,30 @@ void main() {\n\
     gl.VERTEX_SHADER
   );
 
-  var fragmentShader = compileShader(
-    "\n\
-precision highp float;\n\
-uniform vec3 metaballs[" +
-      NUM_METABALLS +
-      "];\n\
-\n\
-void main(){\n\
-    float x = gl_FragCoord.x;\n\
-    float y = gl_FragCoord.y;\n\
-    float v = 0.0;\n\
-    for (int i = 0; i < " +
-      NUM_METABALLS +
-      "; i++) {\n\
-        vec3 mb = metaballs[i];\n\
-        float dx = mb.x - x;\n\
-        float dy = mb.y - y;\n\
-        float r = mb.z;\n\
-        v += r*r/(dx*dx + dy*dy);\n\
-    }\n\
-    if (v > 1.0) {\n\
-        gl_FragColor = vec4(1.0, 0,\n\
-                                0.0, 1.0);\n\
-    } else {\n\
-        gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);\n\
-    }\n\
-}\n\
-",
+  const colorVec4 = hexToVec4(options.color);
+  const backgroundColorVec4 = hexToVec4(options.backgroundColor);
+  var fragmentShader = compileShader(`
+precision highp float;
+uniform vec3 metaballs[${NUM_METABALLS}];
+
+void main(){
+    float x = gl_FragCoord.x;
+    float y = gl_FragCoord.y;
+    float v = 0.0;
+    for (int i = 0; i < ${NUM_METABALLS}; i++) {
+        vec3 mb = metaballs[i];
+        float dx = mb.x - x;
+        float dy = mb.y - y;
+        float r = mb.z;
+        v += r*r/(dx*dx + dy*dy);
+    }
+    if (v > 1.0) {
+        gl_FragColor = vec4(${colorVec4.join(', ')});
+    } else {
+        gl_FragColor = vec4(${backgroundColorVec4.join(', ')});
+    }
+}
+`,
     gl.FRAGMENT_SHADER
   );
 
@@ -181,6 +183,7 @@ void main(){\n\
    * Simulation step, data transfer, and drawing
    */
 
+  let run = true;
   var step = function() {
     // Update positions and speeds
     for (var i = 0; i < NUM_METABALLS; i++) {
@@ -218,8 +221,12 @@ void main(){\n\
 
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
 
-    requestAnimationFrame(step);
+    if (run) requestAnimationFrame(step);
   };
 
   step();
+
+  return () => {
+    run = false;
+  };
 }
