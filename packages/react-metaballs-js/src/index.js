@@ -7,6 +7,7 @@ class Metaballs extends Component {
     numMetaballs: PropTypes.number,
     minRadius: PropTypes.number,
     maxRadius: PropTypes.number,
+    speed: PropTypes.number,
     color: PropTypes.string,
     backgroundColor: PropTypes.string
   }
@@ -32,6 +33,7 @@ class Metaballs extends Component {
       numMetaballs,
       minRadius,
       maxRadius,
+      speed,
       color,
       backgroundColor,
       ...canvasProps
@@ -41,6 +43,7 @@ class Metaballs extends Component {
       numMetaballs,
       minRadius,
       maxRadius,
+      speed,
       color,
       backgroundColor
     }

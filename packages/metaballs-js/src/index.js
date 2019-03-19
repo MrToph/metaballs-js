@@ -2,17 +2,20 @@ import hexToVec4 from "./hex-to-vec4";
 
 const defaultOptions = {
   numMetaballs: 100,
-  minRadius: 10,
-  maxRadius: 30,
-  speed: 30,
-  color: "#ff0000",
-  backgroundColor: "#000000"
+  minRadius: 6,
+  maxRadius: 36,
+  speed: 1.0,
+  color: "#ff0024",
+  backgroundColor: "#121212"
 };
 
 export default function initMetaballs(canvas, passedOptions = {}) {
-  const options = Object.assign({}, defaultOptions, passedOptions);
+  const options = Object.keys(defaultOptions).reduce(
+    (acc, key) =>
+      Object.assign(acc, { [key]: passedOptions[key] !== undefined ? passedOptions[key] : defaultOptions[key] }),
+    {}
+  );
 
-  console.log(canvas);
   if (typeof canvas === "string") {
     canvas = document.getElementById(canvas);
   }
@@ -61,7 +64,8 @@ void main() {\n\
 
   const colorVec4 = hexToVec4(options.color);
   const backgroundColorVec4 = hexToVec4(options.backgroundColor);
-  var fragmentShader = compileShader(`
+  var fragmentShader = compileShader(
+    `
 precision highp float;
 uniform vec3 metaballs[${NUM_METABALLS}];
 
@@ -77,9 +81,9 @@ void main(){
         v += r*r/(dx*dx + dy*dy);
     }
     if (v > 1.0) {
-        gl_FragColor = vec4(${colorVec4.join(', ')});
+        gl_FragColor = vec4(${colorVec4.join(", ")});
     } else {
-        gl_FragColor = vec4(${backgroundColorVec4.join(', ')});
+        gl_FragColor = vec4(${backgroundColorVec4.join(", ")});
     }
 }
 `,
@@ -155,12 +159,14 @@ void main(){
   var metaballs = [];
 
   for (var i = 0; i < NUM_METABALLS; i++) {
-    var radius = Math.random() * 30 + 6;
+    var radius =
+      options.minRadius +
+      Math.random() * (options.maxRadius - options.minRadius);
     metaballs.push({
       x: Math.random() * (WIDTH - 2 * radius) + radius,
       y: Math.random() * (HEIGHT - 2 * radius) + radius,
-      vx: (Math.random() - 0.5) * 1,
-      vy: (Math.random() - 0.5) * 1,
+      vx: (Math.random() - 0.5) * 2 * options.speed,
+      vy: (Math.random() - 0.5) * 2 * options.speed,
       r: radius
     });
   }
