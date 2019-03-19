@@ -11,8 +11,7 @@
   },
   "homepage": "https://github.com/MrToph/metaballs-js#readme",
   "scripts": {
-    "build:server": "lerna run build --scope={@codeponder/common,@codeponder/server}",
-    "build:web": "lerna run build --scope={@codeponder/ui,@codeponder/common,@codeponder/web}"
+    "start": "lerna run start --scope=example"
   },
   "devDependencies": {
     "lerna": "3.10.6",
