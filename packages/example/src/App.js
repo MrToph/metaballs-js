@@ -16,9 +16,9 @@ class App extends Component {
     data: {
       package: "metaballs-js",
       numMetaballs: 100,
-      minRadius: 10,
-      maxRadius: 30,
-      speed: 1.0,
+      minRadius: 3,
+      maxRadius: 5,
+      speed: 10.0,
       color: "#ff0024",
       backgroundColor: "#121212"
     }
@@ -30,14 +30,14 @@ class App extends Component {
     const { data } = this.state;
     return (
       <>
-        <Metaballs key={JSON.stringify(data)} />
+        <Metaballs key={JSON.stringify(data)} {...data} />
 
         <DatGui className="gui" data={data} onUpdate={this.handleUpdate}>
           <DatString path="package" label="Package" />
           <DatNumber
             path="numMetaballs"
             label="Number of Metaballs"
-            min={0}
+            min={1}
             max={500}
             step={1}
           />
@@ -59,8 +59,8 @@ class App extends Component {
             path="speed"
             label="Speed"
             min={0}
-            max={10}
-            step={0.01}
+            max={100}
+            step={1.00}
           />
           <DatColor path="color" label="Color" />
           <DatColor path="backgroundColor" label="Background" />

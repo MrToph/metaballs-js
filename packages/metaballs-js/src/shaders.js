@@ -1,4 +1,4 @@
-import hexToVec4 from './hex-to-vec4'
+import colorToVec4 from './color-to-vec4'
 
 export default function shaders({ gl, options }) {
   // Utility to fail loudly on shader compilation failure
@@ -29,11 +29,12 @@ void main() {
     gl.VERTEX_SHADER
   )
 
-  const colorVec4 = hexToVec4(options.color)
-  const backgroundColorVec4 = hexToVec4(options.backgroundColor)
+  const colorVec4 = colorToVec4(options.color)
+  const backgroundColorVec4 = colorToVec4(options.backgroundColor)
   const fragmentShader = compileShader(
     `
 precision highp float;
+uniform vec2 windowSize;
 uniform vec3 metaballs[${options.numMetaballs}];
 
 void main(){
@@ -42,10 +43,18 @@ void main(){
     float v = 0.0;
     for (int i = 0; i < ${options.numMetaballs}; i++) {
         vec3 mb = metaballs[i];
-        float dx = mb.x - x;
-        float dy = mb.y - y;
-        float r = mb.z;
-        v += r*r/(dx*dx + dy*dy);
+        float dx_1 = (mb.x / 100.0 * windowSize.x) - x;
+        float dx_2 = ((mb.x < 50.0 ? mb.x + 100.0 : mb.x - 100.0) / 100.0 * windowSize.x) - x;
+        float dx_sq = min(dx_1 * dx_1, dx_2 * dx_2);
+        float dy_1 = (mb.y / 100.0 * windowSize.y) - y;
+        float dy_2 = ((mb.y < 50.0 ? mb.y + 100.0 : mb.y - 100.0)/ 100.0 * windowSize.y) - y;
+        float dy_sq =  min(dy_1 * dy_1, dy_2 * dy_2);
+        float r = mb.z / 200.0 * min(windowSize.x, windowSize.y);
+        v += r*r/(dx_sq + dy_sq);
+        // float dx = (mb.x / 100.0 * windowSize.x) - x;
+        // float dy = (mb.y / 100.0 * windowSize.y) - y;
+        // float r = mb.z / 200.0 * min(windowSize.x, windowSize.y);
+        // v += r*r/(dx*dx + dy*dy);
     }
     if (v > 1.0) {
         gl_FragColor = vec4(${colorVec4.join(', ')});

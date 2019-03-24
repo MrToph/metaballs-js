@@ -40,7 +40,7 @@ export default function geometry({ gl, program }) {
 
   // To make the geometry information available in the shader as attributes, we
   // need to tell WebGL what the layout of our data in the vertex buffer is.
-  var positionHandle = getAttribLocation(program, 'position')
+  const positionHandle = getAttribLocation(program, 'position')
   gl.enableVertexAttribArray(positionHandle)
   gl.vertexAttribPointer(
     positionHandle,
