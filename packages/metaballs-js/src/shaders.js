@@ -36,6 +36,10 @@ void main() {
 precision highp float;
 uniform vec2 windowSize;
 uniform vec3 metaballs[${options.numMetaballs}];
+// scaling from [0,100] to [0, canvasWidth/Height]
+float radiusMultiplier = min(windowSize.x, windowSize.y) / 200.0;
+float xMultiplier = windowSize.x / 100.0;
+float yMultiplier = windowSize.y / 100.0;
 
 void main(){
     float x = gl_FragCoord.x;
@@ -43,18 +47,12 @@ void main(){
     float v = 0.0;
     for (int i = 0; i < ${options.numMetaballs}; i++) {
         vec3 mb = metaballs[i];
-        float dx_1 = (mb.x / 100.0 * windowSize.x) - x;
-        float dx_2 = ((mb.x < 50.0 ? mb.x + 100.0 : mb.x - 100.0) / 100.0 * windowSize.x) - x;
-        float dx_sq = min(dx_1 * dx_1, dx_2 * dx_2);
-        float dy_1 = (mb.y / 100.0 * windowSize.y) - y;
-        float dy_2 = ((mb.y < 50.0 ? mb.y + 100.0 : mb.y - 100.0)/ 100.0 * windowSize.y) - y;
-        float dy_sq =  min(dy_1 * dy_1, dy_2 * dy_2);
-        float r = mb.z / 200.0 * min(windowSize.x, windowSize.y);
-        v += r*r/(dx_sq + dy_sq);
-        // float dx = (mb.x / 100.0 * windowSize.x) - x;
-        // float dy = (mb.y / 100.0 * windowSize.y) - y;
-        // float r = mb.z / 200.0 * min(windowSize.x, windowSize.y);
-        // v += r*r/(dx*dx + dy*dy);
+        float dx = abs((mb.x * xMultiplier) - x);
+        dx = min(dx, windowSize.x - dx);
+        float dy = abs((mb.y * yMultiplier) - y);
+        dy = min(dy, windowSize.y - dy);
+        float r = mb.z * radiusMultiplier;
+        v += r*r/(dx*dx + dy*dy);
     }
     if (v > 1.0) {
         gl_FragColor = vec4(${colorVec4.join(', ')});
