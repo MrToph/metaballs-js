@@ -48,8 +48,10 @@ void main(){
     for (int i = 0; i < ${options.numMetaballs}; i++) {
         vec3 mb = metaballs[i];
         float dx = abs((mb.x * xMultiplier) - x);
+        // width - dx is needed for the wrap-around-the-edges logic
         dx = min(dx, windowSize.x - dx);
         float dy = abs((mb.y * yMultiplier) - y);
+        // height - dy is needed for the wrap-around-the-edges logic
         dy = min(dy, windowSize.y - dy);
         float r = mb.z * radiusMultiplier;
         v += r*r/(dx*dx + dy*dy);
