@@ -4,7 +4,8 @@ const defaultOptions = {
   maxRadius: 36,
   speed: 1.0,
   color: '#ff0024',
-  backgroundColor: '#121212'
+  backgroundColor: '#121212',
+  useDevicePixelRatio: true
 }
 
 export default function getOptions(passedOptions) {

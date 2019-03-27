@@ -42,7 +42,7 @@ export default function initMetaballs(canvas, passedOptions = {}) {
 
   // resize handler
   const resize = () => {
-    const realToCSSPixels = window.devicePixelRatio
+    const realToCSSPixels = options.useDevicePixelRatio ? window.devicePixelRatio : 1
 
     // Lookup the size the browser is displaying the canvas in CSS pixels
     // and compute a size needed to make our drawingbuffer match it in
@@ -68,7 +68,7 @@ export default function initMetaballs(canvas, passedOptions = {}) {
   const metaballs = createMetaballs({
     options,
     canvasWidth: canvas.width,
-    canvasHeight: canvas.height,
+    canvasHeight: canvas.height
   })
   const metaballsHandle = getMetaballsHandle({ gl, program })
 
