@@ -1,8 +1,8 @@
 const defaultOptions = {
   numMetaballs: 100,
-  minRadius: 6,
-  maxRadius: 36,
-  speed: 1.0,
+  minRadius: 3,
+  maxRadius: 7.5,
+  speed: 10.0,
   color: '#ff0024',
   backgroundColor: '#121212',
   useDevicePixelRatio: true

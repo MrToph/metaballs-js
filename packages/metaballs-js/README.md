@@ -1,13 +1,14 @@
-# react-metaballs-js
+# metaballs-js
 
+[Example / Demo](TODO)
 > React component for metaballs-js
 
-[![NPM](https://img.shields.io/npm/v/react-metaballsjs.svg)](https://www.npmjs.com/package/react-metaballs-js) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/react-metaballsjs.svg)](https://www.npmjs.com/package/metaballs-js)
 
 ## Install
 
 ```bash
-npm install --save react-metaballs-js
+npm install --save metaballs-js
 ```
 
 ## Usage
@@ -26,7 +27,6 @@ class Example extends Component {
         speed={10.0}
         color="#ff0024"
         backgroundColor="#121212"
-        className="balls"
       />
     );
   }
@@ -35,7 +35,7 @@ class Example extends Component {
 
 ### Props
 
-Accepts all options from [metaballs-js](../metaballs-js).
+Accepts all options from [metaballs-js](../metaballs-js)
 
 | Name                | Description                                     | Type    | Required |                            Default Value                             |
 | :------------------ | :---------------------------------------------- | :------ | :------: | :------------------------------------------------------------------: |
@@ -47,7 +47,7 @@ Accepts all options from [metaballs-js](../metaballs-js).
 | backgroundColor     | The background color of the canvas              | String  |          | ![#121212](https://placehold.it/15/121212/000000?text=+) `'#121212'` |
 | useDevicePixelRatio | Use more pixels matching the device pixel ratio | Boolean |          |                                `true`                                |
 
-> Additionally, any **other props will be forwarded to the underlying `canvas` element**. This enables styling and setting the size through `className` or `style` props.
+> Additionally, any **other props will be forwarded to the underlying `canvas` element**. This enabled styling and setting the size through `className` or `style` props.
 
 ## License
 
