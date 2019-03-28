@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import Metaballs from "react-metaballs-js";
 import "../node_modules/react-dat-gui/build/react-dat-gui.css";
 import DatGui, {
-  DatBoolean,
   DatColor,
   DatNumber,
   DatString
 } from "react-dat-gui";
+import Info from "./Info";
 import "./App.css";
 
 class App extends Component {
@@ -17,7 +17,7 @@ class App extends Component {
       package: "metaballs-js",
       numMetaballs: 100,
       minRadius: 3,
-      maxRadius: 5,
+      maxRadius: 7.5,
       speed: 10.0,
       color: "#ff0024",
       backgroundColor: "#121212"
@@ -65,6 +65,7 @@ class App extends Component {
           <DatColor path="color" label="Color" />
           <DatColor path="backgroundColor" label="Background" />
         </DatGui>
+        <Info />
       </>
     );
   }
