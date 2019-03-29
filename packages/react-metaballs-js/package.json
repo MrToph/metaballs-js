@@ -1,6 +1,6 @@
 {
   "name": "react-metaballs-js",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "React component for metaballs-js",
   "repository": {
     "type": "git",
@@ -32,7 +32,7 @@
     "react-dom": "^16.3.0"
   },
   "dependencies": {
-    "metaballs-js": ">=0"
+    "metaballs-js": "^0.0.4"
   },
   "devDependencies": {
     "@svgr/rollup": "^2.4.1",
