@@ -30,7 +30,7 @@ export default {
     url(),
     svgr(),
     babel({
-      exclude: 'node_modules/**'
+      exclude: ['node_modules/**', '../metaballs-js']
       // plugins: [ 'external-helpers' ] // has issues with lerna and linked packages?
     }),
     resolve(),
