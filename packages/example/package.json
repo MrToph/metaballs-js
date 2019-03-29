@@ -1,7 +1,7 @@
 {
   "name": "example",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Example Demo app displaying Metaballs-js",
   "repository": {
     "type": "git",
@@ -14,10 +14,10 @@
   },
   "homepage": "https://github.com/MrToph/metaballs-js#readme",
   "dependencies": {
-    "react-metaballs-js": "*",
     "react": "^16.8.4",
     "react-dat-gui": "^2.2.0",
     "react-dom": "^16.8.4",
+    "react-metaballs-js": "^0.0.1",
     "react-scripts": "2.1.8",
     "stats.js": "^0.17.0"
   },
