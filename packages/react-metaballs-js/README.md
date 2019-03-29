@@ -2,7 +2,10 @@
 
 > React component for metaballs-js
 
-[![NPM](https://img.shields.io/npm/v/react-metaballsjs.svg)](https://www.npmjs.com/package/react-metaballs-js) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/react-metaballs-js.svg)](https://www.npmjs.com/package/react-metaballs-js)
+![License](https://img.shields.io/npm/l/react-metaballs-js.svg)
+[![BundlePhobia](https://img.shields.io/bundlephobia/min/react-metaballs-js.svg)](https://bundlephobia.com/result?p=react-metaballs-js)
+![Last Commit](https://img.shields.io/github/last-commit/MrToph/metaballs-js.svg)
 
 ## Install
 

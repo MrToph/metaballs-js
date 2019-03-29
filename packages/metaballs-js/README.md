@@ -1,9 +1,9 @@
 # metaballs-js
 
 [![NPM](https://img.shields.io/npm/v/metaballs-js.svg)](https://www.npmjs.com/package/metaballs-js)
-[License](https://img.shields.io/npm/l/metaballs-js.svg)
+![License](https://img.shields.io/npm/l/metaballs-js.svg)
 [![BundlePhobia](https://img.shields.io/bundlephobia/min/metaballs-js.svg)](https://bundlephobia.com/result?p=metaballs-js)
-[Last Commit](https://img.shields.io/github/last-commit/MrToph/metaballs-js.svg)
+![Last Commit](https://img.shields.io/github/last-commit/MrToph/metaballs-js.svg)
 
 [Example / Demo](TODO)
 
