@@ -36,12 +36,13 @@ void main() {
 precision highp float;
 uniform vec2 windowSize;
 uniform vec3 metaballs[${options.numMetaballs}];
-// scaling from [0,100] to [0, canvasWidth/Height]
-float radiusMultiplier = min(windowSize.x, windowSize.y) / 200.0;
-float xMultiplier = windowSize.x / 100.0;
-float yMultiplier = windowSize.y / 100.0;
 
 void main(){
+    // scaling from [0,100] to [0, canvasWidth/Height]
+    float radiusMultiplier = min(windowSize.x, windowSize.y) / 200.0;
+    float xMultiplier = windowSize.x / 100.0;
+    float yMultiplier = windowSize.y / 100.0;
+
     float x = gl_FragCoord.x;
     float y = gl_FragCoord.y;
     float v = 0.0;

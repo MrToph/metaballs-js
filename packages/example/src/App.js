@@ -15,7 +15,7 @@ class App extends Component {
   state = {
     data: {
       package: "metaballs-js",
-      numMetaballs: 100,
+      numMetaballs: 10000,
       minRadius: 3,
       maxRadius: 7.5,
       speed: 10.0,
@@ -30,7 +30,7 @@ class App extends Component {
     const { data } = this.state;
     return (
       <>
-        <Metaballs key={JSON.stringify(data)} {...data} />
+        <Metaballs key={JSON.stringify(data)} {...data} className="balls" />
 
         <DatGui className="gui" data={data} onUpdate={this.handleUpdate}>
           <DatString path="package" label="Package" />
