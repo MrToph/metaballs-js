@@ -11,10 +11,25 @@
   },
   "homepage": "https://github.com/MrToph/metaballs-js#readme",
   "scripts": {
-    "start": "lerna run start --scope=example"
+    "start": "lerna run start --scope=example",
+    "clean": "rimraf packages/*/dist",
+    "build": "npm run clean && npm run build:prod -- --environment PACKAGES:*",
+    "build:prod": "rollup -c rollup.config.prod.js",
+    "prepare": "npm run build"
   },
   "devDependencies": {
     "lerna": "3.10.6",
-    "babel-plugin-external-helpers": "^6.22.0"
+    "@babel/core": "^7.4.0",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/preset-flow": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "rimraf":"2.6.3",
+    "minimatch": "^3.0.4",
+    "rollup": "1.7.3",
+    "rollup-plugin-alias": "^1.5.1",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-commonjs": "^9.2.2",
+    "rollup-plugin-node-resolve": "^4.0.1"
   }
 }

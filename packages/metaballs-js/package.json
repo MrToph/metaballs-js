@@ -19,10 +19,6 @@
     "url": "https://github.com/MrToph/metaballs-js/issues"
   },
   "homepage": "https://github.com/MrToph/metaballs-js#readme",
-  "scripts": {
-    "build": "rollup -c",
-    "prepare": "yarn run build"
-  },
   "devDependencies": {
     "@babel/core": "^7.4.0",
     "@babel/plugin-proposal-class-properties": "^7.4.0",

@@ -21,17 +21,14 @@
   },
   "scripts": {
     "test": "cross-env CI=1 react-scripts test --env=jsdom",
-    "test:watch": "react-scripts test --env=jsdom",
-    "build": "rollup -c",
-    "start": "rollup -c -w",
-    "prepare": "yarn run build"
+    "test:watch": "react-scripts test --env=jsdom"
   },
   "peerDependencies": {
-    "prop-types": "^15.5.4",
     "react": "^16.3.0",
     "react-dom": "^16.3.0"
   },
   "dependencies": {
+    "prop-types": "^15.x",
     "metaballs-js": "^0.0.4"
   },
   "devDependencies": {
