@@ -15,7 +15,7 @@ class App extends Component {
   state = {
     data: {
       package: "metaballs-js",
-      numMetaballs: 10000,
+      numMetaballs: 100,
       minRadius: 3,
       maxRadius: 7.5,
       speed: 10.0,

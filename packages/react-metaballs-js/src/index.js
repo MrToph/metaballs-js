@@ -16,11 +16,15 @@ class Metaballs extends Component {
 
   componentDidMount() {
     const { options } = this.splitProps()
-    this.stopMetaballsAnimation = initMetaballs(this.ref.current, options)
+    try {
+      this.stopMetaballsAnimation = initMetaballs(this.ref.current, options)
+    } catch (err) {
+      console.error(err.message)
+    }
   }
 
   componentWillUnmount() {
-    this.stopMetaballsAnimation()
+    if (typeof this.stopMetaballsAnimation === 'function') { this.stopMetaballsAnimation() }
   }
 
   // rendering handled by metaballs-js
