@@ -6094,6 +6094,11 @@ merge@^1.2.0:
   resolved "https://registry.yarnpkg.com/merge/-/merge-1.2.1.tgz#38bebf80c3220a8a487b6fcfb3941bb11720c145"
   integrity sha512-VjFo4P5Whtj4vsLzsYBu5ayHhoHJ0UqNm7ibvShmbmoz7tGi0vXaoJbGdB+GmDMLUdg8DpQXEIeVDAe8MaABvQ==
 
+metaballs-js@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/metaballs-js/-/metaballs-js-0.0.4.tgz#9f9a6b2f9736723ce12aa182be23c28d43c74e9a"
+  integrity sha512-CTbtI8LjukbZQ3CjF45LJoRkAhwoPqZzPKzi0A+M2BpDvtDceN5+rlVzql0NuZw0OAFU96R82AlcF4jD7bNf4A==
+
 methods@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/methods/-/methods-1.1.2.tgz#5529a4d67654134edcc5266656835b0f851afcee"
@@ -8005,6 +8010,13 @@ react-is@^16.8.1:
   version "16.8.4"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.4.tgz#90f336a68c3a29a096a3d648ab80e87ec61482a2"
   integrity sha512-PVadd+WaUDOAciICm/J1waJaSvgq+4rHE/K70j0PFqKhkTBsPv/82UGQJNXAngz1fOQLLxI6z1sEDmJDQhCTAA==
+
+react-metaballs-js@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/react-metaballs-js/-/react-metaballs-js-0.0.4.tgz#53c56aa8187d06f1c66e580ff7005a1a9a81ba54"
+  integrity sha512-CgC7xOmffVz2bAe07+HdH2yXPBG9yDmjZ1r6GcIUb//EWMoILtMFPsaHbeRL2IzdpaVpB+B2YVa+3gpr+5UgVw==
+  dependencies:
+    metaballs-js "^0.0.4"
 
 react-scripts@2.1.8:
   version "2.1.8"
