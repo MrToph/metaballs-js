@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.5",
   "description": "Example Demo app displaying Metaballs-js",
-  "homepage": "/",
+  "homepage": ".",
   "repository": {
     "type": "git",
     "url": "https://github.com/MrToph/metaballs-js.git"

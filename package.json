@@ -16,7 +16,8 @@
     "clean": "rimraf packages/*/dist",
     "compile": "npm run clean && npm run compile:prod -- --environment PACKAGES:*",
     "compile:prod": "rollup -c rollup.config.prod.js",
-    "prepublishOnly": "npm run compile"
+    "prepublishOnly": "npm run compile",
+    "postpublish": "npm run deploy"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
