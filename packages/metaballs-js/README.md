@@ -40,7 +40,7 @@ initMetaballs(cssSelector, options)
 // in your HTML
 <html>
   <body>
-    <canvas id="#canvasId"></canvas>
+    <canvas id="canvasId"></canvas>
   </body>
 </html>
 ```
