@@ -12,7 +12,7 @@ export default function initMetaballs(canvas, passedOptions = {}) {
   const options = getOptions(passedOptions)
 
   if (typeof canvas === 'string') {
-    canvas = document.getElementById(canvas)
+    canvas = document.querySelector(canvas)
   }
   if (
     !(canvas instanceof window.Element) ||
