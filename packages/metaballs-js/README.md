@@ -5,7 +5,9 @@
 [![BundlePhobia](https://img.shields.io/bundlephobia/min/metaballs-js.svg)](https://bundlephobia.com/result?p=metaballs-js)
 ![Last Commit](https://img.shields.io/github/last-commit/MrToph/metaballs-js.svg)
 
-[Example / Demo](https://mrtoph.github.io/metaballs-js)
+![Demo](https://raw.githubusercontent.com/MrToph/metaballs-js/master/README/demo.gif)
+
+[Playground / Demo](https://mrtoph.github.io/metaballs-js)
 
 ## Features
 
