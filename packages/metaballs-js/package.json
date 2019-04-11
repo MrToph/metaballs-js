@@ -1,6 +1,6 @@
 {
   "name": "metaballs-js",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Animated Metaballs using WebGL",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
