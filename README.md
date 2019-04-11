@@ -14,5 +14,5 @@ yarn # or npm i
 lerna start # starts the example app in packages/example
 
 # make changes to packages
-lerna bootstrap # propagates changes and hot-reloads example app
+npm run compile # propagates changes and hot-reloads example app
 ```

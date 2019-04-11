@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Info.css";
 import { ReactComponent as GithubSvg } from "./assets/github.svg";
-import packageJson from "../node_modules/metaballs-js/package.json";
+import packageJson from "react-metaballs-js/package.json";
 
 export default function Info() {
   const [visible, setVisible] = useState(true);

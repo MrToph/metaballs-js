@@ -16,7 +16,7 @@ export default color => {
   const unitChannels = hexChannels
     .map(hex => Number.parseInt(hex, '16'))
     .map(val => val / 0xff)
-  if (!unitChannels[3]) unitChannels[3] = 1.0
+  if (!Number.isFinite(unitChannels[3])) unitChannels[3] = 1.0
 
   return unitChannels
 }
