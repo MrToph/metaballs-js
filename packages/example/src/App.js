@@ -5,7 +5,7 @@ import DatGui, {
   DatColor,
   DatNumber,
   DatString,
-  DatBoolean
+  DatSelect
 } from "react-dat-gui";
 import Info from "./Info";
 import "./App.css";
@@ -22,7 +22,7 @@ class App extends Component {
       speed: 10.0,
       color: "#ff0024",
       backgroundColor: "#121212",
-      interactive: false,
+      interactive: false
     }
   };
 
@@ -57,16 +57,14 @@ class App extends Component {
             max={100}
             step={0.1}
           />
-          <DatNumber
-            path="speed"
-            label="Speed"
-            min={0}
-            max={100}
-            step={1.00}
-          />
+          <DatNumber path="speed" label="Speed" min={0} max={100} step={1.0} />
           <DatColor path="color" label="Color" />
           <DatColor path="backgroundColor" label="Background" />
-          <DatBoolean path="interactive" label="Interactive" />
+          <DatSelect
+            path="interactive"
+            label="Interactive"
+            options={[false, "window", "canvas"]}
+          />
         </DatGui>
         <Info />
       </>

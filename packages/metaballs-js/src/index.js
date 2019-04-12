@@ -83,7 +83,7 @@ export default function initMetaballs(canvas, passedOptions = {}) {
   /**
    * Simulation step, data transfer, and drawing
    */
-  const { cursorPos, cursorMove } = initInteractive({ options, gl })
+  const { cursorPos, unsubscribe: unsubscribeInteractive } = initInteractive({ options, gl })
 
   let run = true
   const step = function() {
@@ -129,9 +129,7 @@ export default function initMetaballs(canvas, passedOptions = {}) {
   const destroy = () => {
     run = false
     window.removeEventListener('resize', resize)
-    if (options.interactive && canvas) {
-      canvas.removeEventListener('mousemove', cursorMove)
-    }
+    unsubscribeInteractive()
   }
   return destroy
 }

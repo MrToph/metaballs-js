@@ -10,7 +10,10 @@ class Metaballs extends Component {
     speed: PropTypes.number,
     color: PropTypes.string,
     backgroundColor: PropTypes.string,
-    interactive: PropTypes.bool,
+    interactive: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.oneOf(['window', 'canvas'])
+    ]),
     useDevicePixelRatio: PropTypes.bool
   }
 
