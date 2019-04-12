@@ -4,7 +4,8 @@ import "../node_modules/react-dat-gui/build/react-dat-gui.css";
 import DatGui, {
   DatColor,
   DatNumber,
-  DatString
+  DatString,
+  DatBoolean
 } from "react-dat-gui";
 import Info from "./Info";
 import "./App.css";
@@ -20,7 +21,8 @@ class App extends Component {
       maxRadius: 7.5,
       speed: 10.0,
       color: "#ff0024",
-      backgroundColor: "#121212"
+      backgroundColor: "#121212",
+      interactive: false,
     }
   };
 
@@ -64,6 +66,7 @@ class App extends Component {
           />
           <DatColor path="color" label="Color" />
           <DatColor path="backgroundColor" label="Background" />
+          <DatBoolean path="interactive" label="Interactive" />
         </DatGui>
         <Info />
       </>

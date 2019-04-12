@@ -9,7 +9,9 @@ class Metaballs extends Component {
     maxRadius: PropTypes.number,
     speed: PropTypes.number,
     color: PropTypes.string,
-    backgroundColor: PropTypes.string
+    backgroundColor: PropTypes.string,
+    interactive: PropTypes.bool,
+    useDevicePixelRatio: PropTypes.bool
   }
 
   ref = React.createRef()
@@ -24,7 +26,9 @@ class Metaballs extends Component {
   }
 
   componentWillUnmount() {
-    if (typeof this.stopMetaballsAnimation === 'function') { this.stopMetaballsAnimation() }
+    if (typeof this.stopMetaballsAnimation === 'function') {
+      this.stopMetaballsAnimation()
+    }
   }
 
   // rendering handled by metaballs-js
@@ -40,6 +44,8 @@ class Metaballs extends Component {
       speed,
       color,
       backgroundColor,
+      interactive,
+      useDevicePixelRatio,
       ...canvasProps
     } = this.props
 
@@ -49,7 +55,9 @@ class Metaballs extends Component {
       maxRadius,
       speed,
       color,
-      backgroundColor
+      backgroundColor,
+      interactive,
+      useDevicePixelRatio
     }
 
     return {

@@ -7,6 +7,7 @@ import {
   simulateMovement
 } from './metaballs'
 import { getUniformLocation } from './utils'
+import initInteractive from './interactive';
 
 export default function initMetaballs(canvas, passedOptions = {}) {
   const options = getOptions(passedOptions)
@@ -42,7 +43,9 @@ export default function initMetaballs(canvas, passedOptions = {}) {
 
   // resize handler
   const resize = () => {
-    const realToCSSPixels = options.useDevicePixelRatio ? window.devicePixelRatio : 1
+    const realToCSSPixels = options.useDevicePixelRatio
+      ? window.devicePixelRatio
+      : 1
 
     // Lookup the size the browser is displaying the canvas in CSS pixels
     // and compute a size needed to make our drawingbuffer match it in
@@ -66,9 +69,7 @@ export default function initMetaballs(canvas, passedOptions = {}) {
   resize()
 
   const metaballs = createMetaballs({
-    options,
-    canvasWidth: canvas.width,
-    canvasHeight: canvas.height
+    options
   })
   const metaballsHandle = getMetaballsHandle({ gl, program })
 
@@ -82,12 +83,14 @@ export default function initMetaballs(canvas, passedOptions = {}) {
   /**
    * Simulation step, data transfer, and drawing
    */
+  const { cursorPos, cursorMove } = initInteractive({ options, gl })
+
   let run = true
   const step = function() {
     const canvasWidth = gl.canvas.width
     const canvasHeight = gl.canvas.height
     // Update positions and speeds
-    simulateMovement({ metaballs, canvasWidth, canvasHeight })
+    simulateMovement({ metaballs, options })
 
     // To send the data to the GPU, we first need to
     // flatten our data into a single array.
@@ -96,10 +99,17 @@ export default function initMetaballs(canvas, passedOptions = {}) {
       const baseIndex = 3 * i
       dataToSendToGPU[baseIndex + 0] = mb.x
       dataToSendToGPU[baseIndex + 1] = mb.y
-      // TODO: radius should change when resizing according to
-      // min{WIDTH,HEIGHT} * r
       dataToSendToGPU[baseIndex + 2] = mb.r
     })
+
+    if (options.interactive) {
+      // overwrite last metaball's position with cursor
+      const baseIndex = 3 * (metaballs.length - 1)
+      dataToSendToGPU[baseIndex + 0] = cursorPos.x
+      dataToSendToGPU[baseIndex + 1] = cursorPos.y
+      dataToSendToGPU[baseIndex + 2] = options.maxRadius
+    }
+
     gl.uniform3fv(metaballsHandle, dataToSendToGPU)
     gl.uniform2fv(
       windowSizeHandle,
@@ -119,6 +129,9 @@ export default function initMetaballs(canvas, passedOptions = {}) {
   const destroy = () => {
     run = false
     window.removeEventListener('resize', resize)
+    if (options.interactive && canvas) {
+      canvas.removeEventListener('mousemove', cursorMove)
+    }
   }
   return destroy
 }

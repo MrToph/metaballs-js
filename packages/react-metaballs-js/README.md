@@ -40,16 +40,6 @@ class Example extends Component {
 
 Accepts all options from [metaballs-js](../metaballs-js).
 
-| Name                | Description                                     | Type    | Required |                            Default Value                             |
-| :------------------ | :---------------------------------------------- | :------ | :------: | :------------------------------------------------------------------: |
-| numMetaballs        | The number of metaballs to display              | Number  |          |                                `100`                                 |
-| minRadius           | minimum radius of a metaball                    | Number  |          |                                 `3`                                  |
-| maxRadius           | maximum radius of a metaball                    | Number  |          |                                `7.5`                                 |
-| speed               | maximum speed of a metaball                     | Number  |          |                                `10.0`                                |
-| color               | color of the metaballs                          | String  |          | ![#ff0024](https://placehold.it/15/ff0024/000000?text=+) `'#ff0024'` |
-| backgroundColor     | The background color of the canvas              | String  |          | ![#121212](https://placehold.it/15/121212/000000?text=+) `'#121212'` |
-| useDevicePixelRatio | Use more pixels matching the device pixel ratio | Boolean |          |                                `true`                                |
-
 > Additionally, any **other props will be forwarded to the underlying `canvas` element**. This enables styling and setting the size through `className` or `style` props.
 
 ## License

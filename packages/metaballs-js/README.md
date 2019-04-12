@@ -57,6 +57,7 @@ initMetaballs(cssSelector, options)
 | speed               | maximum speed of a metaball                     | Number  |                                `10.0`                                |
 | color               | color of the metaballs                          | String  | ![#ff0024](https://placehold.it/15/ff0024/000000?text=+) `'#ff0024'` |
 | backgroundColor     | The background color of the canvas              | String  | ![#121212](https://placehold.it/15/121212/000000?text=+) `'#121212'` |
+| interactive         | Create a metaball at cursor position            | Boolean |                               `false`                                |
 | useDevicePixelRatio | Use more pixels matching the device pixel ratio | Boolean |                                `true`                                |
 
 ## Limitations
@@ -73,8 +74,8 @@ This is especially problematic on mobile phones.
 
 ## Resources
 
-* The code is largely based on [Jamie Wong's excellent tutorial](http://jamie-wong.com/2016/07/06/metaballs-and-webgl/)
-* [Jamie Wong explaining the math](http://jamie-wong.com/2014/08/19/metaballs-and-marching-squares/)
+- The code is largely based on [Jamie Wong's excellent tutorial](http://jamie-wong.com/2016/07/06/metaballs-and-webgl/)
+- [Jamie Wong explaining the math](http://jamie-wong.com/2014/08/19/metaballs-and-marching-squares/)
 
 ## License
 

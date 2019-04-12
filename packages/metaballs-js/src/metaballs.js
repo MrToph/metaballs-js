@@ -1,21 +1,27 @@
 import { getUniformLocation } from './utils'
 
-const createMetaballs = ({ options, canvasWidth, canvasHeight }) => {
-  return Array.from({ length: options.numMetaballs }, () => {
-    const radius =
-      options.minRadius +
-      Math.random() * (options.maxRadius - options.minRadius)
-    return {
-      x: Math.random() * (100 - radius / 100) + radius / 200,
-      y: Math.random() * (100 - radius / 100) + radius / 200,
-      vx: (Math.random() - 0.5) * 2 * options.speed / 100,
-      vy: (Math.random() - 0.5) * 2 * options.speed / 100,
-      r: radius
+const createMetaballs = ({ options }) => {
+  return Array.from(
+    { length: options.numMetaballs + (options.interactive ? 1 : 0) },
+    () => {
+      const radius =
+        options.minRadius +
+        Math.random() * (options.maxRadius - options.minRadius)
+      return {
+        x: Math.random() * (100 - radius / 100) + radius / 200,
+        y: Math.random() * (100 - radius / 100) + radius / 200,
+        vx: ((Math.random() - 0.5) * 2 * options.speed) / 100,
+        vy: ((Math.random() - 0.5) * 2 * options.speed) / 100,
+        r: radius
+      }
     }
-  })
+  )
 }
 
-const simulateMovement = ({ metaballs, canvasWidth, canvasHeight }) => {
+const simulateMovement = ({ metaballs, options }) => {
+  // don't move last interactive cursor metaball
+  if (options.interactive) metaballs = metaballs.slice(0, -1)
+
   metaballs.forEach(mb => {
     mb.x += mb.vx
     if (mb.x < 0) {

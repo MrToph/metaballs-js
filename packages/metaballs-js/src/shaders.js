@@ -29,13 +29,14 @@ void main() {
     gl.VERTEX_SHADER
   )
 
+  const numMetaballs = options.numMetaballs + (options.interactive ? 1 : 0)
   const colorVec4 = colorToVec4(options.color)
   const backgroundColorVec4 = colorToVec4(options.backgroundColor)
   const fragmentShader = compileShader(
     `
 precision highp float;
 uniform vec2 windowSize;
-uniform vec3 metaballs[${options.numMetaballs}];
+uniform vec3 metaballs[${numMetaballs}];
 
 void main(){
     // scaling from [0,100] to [0, canvasWidth/Height]
@@ -46,7 +47,7 @@ void main(){
     float x = gl_FragCoord.x;
     float y = gl_FragCoord.y;
     float v = 0.0;
-    for (int i = 0; i < ${options.numMetaballs}; i++) {
+    for (int i = 0; i < ${numMetaballs}; i++) {
         vec3 mb = metaballs[i];
         float dx = abs((mb.x * xMultiplier) - x);
         // width - dx is needed for the wrap-around-the-edges logic

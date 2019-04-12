@@ -5,7 +5,8 @@ const defaultOptions = {
   speed: 10.0,
   color: '#ff0024',
   backgroundColor: '#121212',
-  useDevicePixelRatio: true
+  useDevicePixelRatio: true,
+  interactive: false
 }
 
 export default function getOptions(passedOptions) {
